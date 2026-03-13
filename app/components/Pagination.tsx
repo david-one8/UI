@@ -39,8 +39,8 @@ function PaginationComponent({ currentPage, totalPages, onPageChange }: Paginati
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className="flex items-center gap-1 px-3 py-2 text-sm text-gray-600 border border-gray-200
-                   rounded-lg hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+        className="flex items-center gap-1 px-3 py-2 text-sm text-gray-600 dark:text-gray-400 border border-gray-200 dark:border-gray-700
+                   rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
       >
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -51,7 +51,7 @@ function PaginationComponent({ currentPage, totalPages, onPageChange }: Paginati
       {/* Page numbers */}
       {pages.map((page, idx) =>
         page === "ellipsis" ? (
-          <span key={`ellipsis-${idx}`} className="px-2 py-2 text-sm text-gray-400">
+          <span key={`ellipsis-${idx}`} className="px-2 py-2 text-sm text-gray-400 dark:text-gray-500">
             ...
           </span>
         ) : (
@@ -61,7 +61,7 @@ function PaginationComponent({ currentPage, totalPages, onPageChange }: Paginati
             className={`w-9 h-9 text-sm rounded-lg transition-colors
               ${currentPage === page
                 ? "bg-blue-600 text-white font-medium"
-                : "text-gray-600 hover:bg-gray-100"
+                : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
               }`}
           >
             {page}
@@ -73,8 +73,8 @@ function PaginationComponent({ currentPage, totalPages, onPageChange }: Paginati
       <button
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="flex items-center gap-1 px-3 py-2 text-sm text-gray-600 border border-gray-200
-                   rounded-lg hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+        className="flex items-center gap-1 px-3 py-2 text-sm text-gray-600 dark:text-gray-400 border border-gray-200 dark:border-gray-700
+                   rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
       >
         Next
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
