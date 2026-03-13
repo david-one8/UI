@@ -38,7 +38,7 @@ function SearchBarComponent({ value, onChange, selectedIssues, onIssuesChange }:
     <div className="relative flex-1" ref={containerRef}>
       {/* Search icon */}
       <svg
-        className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-blue-500 pointer-events-none"
+        className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-blue-500 dark:text-blue-400 pointer-events-none"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
@@ -56,9 +56,10 @@ function SearchBarComponent({ value, onChange, selectedIssues, onIssuesChange }:
         placeholder="Search"
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full pl-10 pr-10 py-2.5 border border-gray-200 rounded-lg text-sm
+        className="w-full pl-10 pr-10 py-2.5 border border-gray-200 dark:border-gray-700 rounded-lg text-sm
+                   bg-white dark:bg-gray-800 dark:text-gray-100
                    focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
-                   placeholder:text-blue-400"
+                   placeholder:text-blue-400 dark:placeholder:text-blue-500"
       />
 
       {/* Funnel icon — opens filter dropdown */}
@@ -66,8 +67,8 @@ function SearchBarComponent({ value, onChange, selectedIssues, onIssuesChange }:
         onClick={() => setIsFilterOpen((o) => !o)}
         className={`absolute right-3 top-1/2 -translate-y-1/2 p-0.5 rounded transition-colors
                     ${isFilterOpen || selectedIssues.length > 0
-                      ? "text-blue-500 hover:text-blue-700"
-                      : "text-gray-400 hover:text-gray-600"
+                      ? "text-blue-500 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+                      : "text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300"
                     }`}
         aria-label="Toggle filters"
       >
@@ -83,10 +84,10 @@ function SearchBarComponent({ value, onChange, selectedIssues, onIssuesChange }:
 
       {/* Filter dropdown anchored to the search bar */}
       {isFilterOpen && (
-        <div className="absolute left-0 right-0 top-full mt-2 bg-white border border-gray-200
+        <div className="absolute left-0 right-0 top-full mt-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700
                         rounded-xl shadow-lg z-50 p-3 animate-dropdown-in">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-semibold text-gray-700">Filter by Medical Issue</span>
+            <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">Filter by Medical Issue</span>
             {selectedIssues.length > 0 && (
               <button
                 onClick={clearAll}
@@ -100,15 +101,15 @@ function SearchBarComponent({ value, onChange, selectedIssues, onIssuesChange }:
             {ALL_MEDICAL_ISSUES.map((issue) => (
               <label
                 key={issue}
-                className="flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-gray-50 cursor-pointer"
+                className="flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer"
               >
                 <input
                   type="checkbox"
                   checked={selectedIssues.includes(issue)}
                   onChange={() => toggleIssue(issue)}
-                  className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                  className="w-4 h-4 rounded border-gray-300 dark:border-gray-600 text-blue-600 focus:ring-blue-500"
                 />
-                <span className="text-sm text-gray-700 capitalize">{issue}</span>
+                <span className="text-sm text-gray-700 dark:text-gray-300 capitalize">{issue}</span>
               </label>
             ))}
           </div>
