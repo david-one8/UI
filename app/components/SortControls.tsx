@@ -27,7 +27,7 @@ function SortControlsComponent({ sortBy, sortOrder, onSortChange }: SortControls
 
   return (
     <div className="flex items-center gap-2">
-      <span className="text-sm font-medium text-gray-600 whitespace-nowrap">Sort by:</span>
+      <span className="text-sm font-medium text-gray-600 dark:text-gray-400 whitespace-nowrap">Sort by:</span>
       {SORT_OPTIONS.slice(0, 2).map((option) => (
         <button
           key={option.value}
@@ -35,8 +35,8 @@ function SortControlsComponent({ sortBy, sortOrder, onSortChange }: SortControls
           className={`flex items-center gap-1 px-3 py-2 text-sm border rounded-lg
                       transition-all duration-200
             ${sortBy === option.value
-              ? "bg-blue-50 border-blue-200 text-blue-700"
-              : "border-gray-200 text-gray-600 hover:bg-gray-50"
+              ? "bg-blue-50 dark:bg-blue-900/30 border-blue-200 dark:border-blue-700 text-blue-700 dark:text-blue-300"
+              : "border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800"
             }`}
         >
           {option.label}
