@@ -40,21 +40,21 @@ function FilterPanelComponent({ selectedIssues, onIssuesChange }: FilterPanelPro
     <div className="relative" ref={panelRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-3 py-2 text-sm border border-gray-200 rounded-lg
-                   hover:bg-gray-50 transition-colors"
+        className="flex items-center gap-2 px-3 py-2 text-sm border border-gray-200 dark:border-gray-700 rounded-lg
+                   hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
       >
-        <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
             d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
         </svg>
-        <span className="text-gray-600">Active Filters: {selectedIssues.length}</span>
+        <span className="text-gray-600 dark:text-gray-400">Active Filters: {selectedIssues.length}</span>
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 top-full mt-2 w-64 bg-white border border-gray-200
+        <div className="absolute right-0 top-full mt-2 w-64 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700
                         rounded-lg shadow-lg z-50 p-3 animate-dropdown-in">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-medium text-gray-700">Medical Issue</span>
+            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Medical Issue</span>
             {selectedIssues.length > 0 && (
               <button onClick={clearAll} className="text-xs text-blue-500 hover:text-blue-700">
                 Clear all
@@ -63,14 +63,14 @@ function FilterPanelComponent({ selectedIssues, onIssuesChange }: FilterPanelPro
           </div>
           <div className="space-y-1 max-h-60 overflow-y-auto">
             {ALL_MEDICAL_ISSUES.map((issue) => (
-              <label key={issue} className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-gray-50 cursor-pointer">
+              <label key={issue} className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer">
                 <input
                   type="checkbox"
                   checked={selectedIssues.includes(issue)}
                   onChange={() => toggleIssue(issue)}
-                  className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                  className="w-4 h-4 rounded border-gray-300 dark:border-gray-600 text-blue-600 focus:ring-blue-500"
                 />
-                <span className="text-sm text-gray-700 capitalize">{issue}</span>
+                <span className="text-sm text-gray-700 dark:text-gray-300 capitalize">{issue}</span>
               </label>
             ))}
           </div>
