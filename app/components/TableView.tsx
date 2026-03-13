@@ -29,8 +29,8 @@ function SortableHeader({
   const isActive = currentSort === field;
   return (
     <th
-      className="px-4 py-3 text-left text-xs font-semibold text-blue-600 uppercase tracking-wider cursor-pointer
-                 hover:text-blue-800 select-none"
+      className="px-4 py-3 text-left text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider cursor-pointer
+                 hover:text-blue-800 dark:hover:text-blue-300 select-none"
       onClick={() => onSort(field)}
     >
       <div className="flex items-center gap-1">
@@ -62,51 +62,51 @@ function TableViewComponent({ patients, sortBy, sortOrder, onSortChange }: Table
     <div className="overflow-x-auto">
       <table className="w-full">
         <thead>
-          <tr className="border-b border-gray-100">
+          <tr className="border-b border-gray-100 dark:border-gray-700">
             <SortableHeader label="ID" field="patient_id" currentSort={sortBy} currentOrder={sortOrder} onSort={handleSort} />
             <SortableHeader label="Name" field="patient_name" currentSort={sortBy} currentOrder={sortOrder} onSort={handleSort} />
             <SortableHeader label="Age" field="age" currentSort={sortBy} currentOrder={sortOrder} onSort={handleSort} />
             <SortableHeader label="Medical Issue" field="medical_issue" currentSort={sortBy} currentOrder={sortOrder} onSort={handleSort} />
-            <th className="px-4 py-3 text-left text-xs font-semibold text-blue-600 uppercase tracking-wider">Address</th>
-            <th className="px-4 py-3 text-left text-xs font-semibold text-blue-600 uppercase tracking-wider">Phone Number</th>
-            <th className="px-4 py-3 text-left text-xs font-semibold text-blue-600 uppercase tracking-wider">Email ID</th>
+            <th className="px-4 py-3 text-left text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider">Address</th>
+            <th className="px-4 py-3 text-left text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider">Phone Number</th>
+            <th className="px-4 py-3 text-left text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider">Email ID</th>
             <th className="px-4 py-3 w-10"></th>
           </tr>
         </thead>
-        <tbody className="divide-y divide-gray-50">
+        <tbody className="divide-y divide-gray-50 dark:divide-gray-700">
           {patients.map((patient) => {
             const contact = patient.contact[0];
             const badgeClass = MEDICAL_ISSUE_COLORS[patient.medical_issue] || "bg-gray-100 text-gray-700";
             return (
-              <tr key={patient.patient_id} className="hover:bg-blue-50/40 transition-colors duration-150">
-                <td className="px-4 py-3.5 text-sm text-gray-600 whitespace-nowrap">
+              <tr key={patient.patient_id} className="hover:bg-blue-50/40 dark:hover:bg-blue-900/20 transition-colors duration-150">
+                <td className="px-4 py-3.5 text-sm text-gray-600 dark:text-gray-400 whitespace-nowrap">
                   {formatId(patient.patient_id)}
                 </td>
                 <td className="px-4 py-3.5">
                   <div className="flex items-center gap-3">
                     <PatientAvatar name={patient.patient_name} size="sm" />
-                    <span className="text-sm font-medium text-gray-900">
+                    <span className="text-sm font-medium text-gray-900 dark:text-gray-100">
                       {patient.patient_name}
                     </span>
                   </div>
                 </td>
-                <td className="px-4 py-3.5 text-sm text-gray-600">{patient.age}</td>
+                <td className="px-4 py-3.5 text-sm text-gray-600 dark:text-gray-400">{patient.age}</td>
                 <td className="px-4 py-3.5">
                   <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border ${badgeClass}`}>
                     {capitalize(patient.medical_issue)}
                   </span>
                 </td>
-                <td className="px-4 py-3.5 text-sm text-gray-600 max-w-[180px] truncate">
+                <td className="px-4 py-3.5 text-sm text-gray-600 dark:text-gray-400 max-w-[180px] truncate">
                   {contact?.address || <span className="text-red-400">N/A</span>}
                 </td>
-                <td className="px-4 py-3.5 text-sm text-gray-600 whitespace-nowrap">
+                <td className="px-4 py-3.5 text-sm text-gray-600 dark:text-gray-400 whitespace-nowrap">
                   {contact?.number || <span className="text-red-400">N/A</span>}
                 </td>
-                <td className="px-4 py-3.5 text-sm text-gray-600 max-w-[200px] truncate">
+                <td className="px-4 py-3.5 text-sm text-gray-600 dark:text-gray-400 max-w-[200px] truncate">
                   {contact?.email || <span className="text-red-400">N/A</span>}
                 </td>
                 <td className="px-4 py-3.5">
-                  <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </td>
